@@ -1,0 +1,27 @@
+{
+    "name": "microsoft/kiota-http-guzzle",
+    "description": "HTTP implementations using Guzzle for Kiota",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Microsoft\\Kiota\\Http\\Guzzle\\": "./src"
+        }
+    },
+
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../../../abstractions/php"
+    }
+  ],
+    "require": {
+      "php": "^7.4 || ^8.0",
+      "php-http/guzzle6-adapter": "^v1.1.1",
+      "microsoft/kiota-abstractions": "dev-feat/php/http"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12.92"
+    }
+}
