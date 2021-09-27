@@ -4,6 +4,10 @@
   "description": "Core abstractions for kiota generated libraries in TypeScript and JavaScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "browser": {
+    "dist/index.js": "dist/index.browser.js",
+    "dist/utils/utils.node.js":"dist/utils/utils.browser.js"
+},
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1",
