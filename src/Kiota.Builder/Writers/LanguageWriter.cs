@@ -6,6 +6,7 @@ using Kiota.Builder.Writers.CSharp;
 using Kiota.Builder.Writers.Go;
 using Kiota.Builder.Writers.Java;
 using Kiota.Builder.Writers.Ruby;
+using Kiota.Builder.Writers.Shell;
 using Kiota.Builder.Writers.TypeScript;
 
 namespace Kiota.Builder.Writers
@@ -115,6 +116,7 @@ namespace Kiota.Builder.Writers
                 GenerationLanguage.TypeScript => new TypeScriptWriter(outputPath, clientNamespaceName),
                 GenerationLanguage.Ruby => new RubyWriter(outputPath, clientNamespaceName),
                 GenerationLanguage.Go => new GoWriter(outputPath, clientNamespaceName),
+                GenerationLanguage.Shell => new ShellWriter(outputPath, clientNamespaceName),
                 _ => throw new InvalidEnumArgumentException($"{language} language currently not supported."),
             };
         }

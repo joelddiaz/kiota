@@ -104,6 +104,7 @@ namespace Kiota.Builder
                 
             }
             public CodeType Inherits { get; set; }
+            public Boolean IsStatic { get; set;}
             public List<CodeType> Implements { get; set; } = new List<CodeType>();
         }
 
