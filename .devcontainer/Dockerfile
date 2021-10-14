@@ -18,7 +18,7 @@ RUN wget https://services.gradle.org/distributions/gradle-7.2-bin.zip -P /tmp \
     && unzip -d /opt/gradle /tmp/gradle-7.2-bin.zip \
     && ln -s /opt/gradle/gradle-7.2 /opt/gradle/latest \
     && echo "export GRADLE_HOME=/opt/gradle/latest" > /etc/profile.d/gradle.sh \
-    && echo "export PATH=${GRADLE_HOME}/bin:${PATH}" >> /etc/profile.d/gradle.sh \
+    && echo "export PATH=\${GRADLE_HOME}/bin:\${PATH}" >> /etc/profile.d/gradle.sh \
     && chmod +x /etc/profile.d/gradle.sh
 
 # installs golang
