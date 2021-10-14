@@ -10,7 +10,8 @@ RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | s
     && apt-get update \
     && add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ \
     && apt-get update \
-    && apt-get install unzip adoptopenjdk-17-hotspot -y
+    && apt-get install unzip adoptopenjdk-16-hotspot -y
+# leaving on java 16 until this gets completed https://github.com/adoptium/installer/issues/330
 
 # installs gradle
 RUN wget https://services.gradle.org/distributions/gradle-7.2-bin.zip -P /tmp \
