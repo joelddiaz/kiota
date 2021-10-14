@@ -16,8 +16,7 @@ RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | s
 # installs gradle
 RUN wget https://services.gradle.org/distributions/gradle-7.2-bin.zip -P /tmp \
     && unzip -d /opt/gradle /tmp/gradle-7.2-bin.zip \
-    && ln -s /opt/gradle/gradle-7.2 /opt/gradle/latest \
-    && export GRADLE_HOME=/opt/gradle/latest \
+    && export GRADLE_HOME=/opt/gradle/gradle-7.2 \
     && export PATH=${GRADLE_HOME}/bin:${PATH}
 
 # installs golang
