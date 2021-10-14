@@ -17,12 +17,11 @@ RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | s
 RUN wget https://services.gradle.org/distributions/gradle-7.2-bin.zip -P /tmp \
     && unzip -d /opt/gradle /tmp/gradle-7.2-bin.zip \
     && ln -s /opt/gradle/gradle-7.2 /opt/gradle/latest \
-    && echo "export GRADLE_HOME=/opt/gradle/latest" > /etc/profile.d/gradle.sh \
-    && echo "export PATH=\${GRADLE_HOME}/bin:\${PATH}" >> /etc/profile.d/gradle.sh \
-    && chmod +x /etc/profile.d/gradle.sh
+    && export GRADLE_HOME=/opt/gradle/latest \
+    && export PATH=${GRADLE_HOME}/bin:${PATH}
 
 # installs golang
-RUN wget -c https://dl.google.com/go/go1.16.7.linux-amd64.tar.gz -O - | tar -xz -C /usr/local \
+RUN wget -c https://dl.google.com/go/go1.17.2.linux-amd64.tar.gz -O - | tar -xz -C /usr/local \
     && export PATH=$PATH:/usr/local/go/bin \
     && go get -v golang.org/x/tools/gopls
 
@@ -45,3 +44,6 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 \
     && apt-add-repository https://cli.github.com/packages \
     && apt update \
     && apt install gh -y
+
+# General updates for sanity
+RUN apt-get dist-upgrade -y
