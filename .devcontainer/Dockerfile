@@ -45,6 +45,3 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 \
     && apt-add-repository https://cli.github.com/packages \
     && apt update \
     && apt install gh -y
-
-# General updates for sanity
-RUN apt-get dist-upgrade -y
