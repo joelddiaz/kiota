@@ -119,12 +119,16 @@ public class RedirectHandler implements Interceptor{
     public Response intercept(@Nonnull final Chain chain) throws IOException {
         Request request = chain.request();
 
+        //TODO: Implmenet new Telemetry handler
+
+        /**
         TelemetryOptions telemetryOptions = request.tag(TelemetryOptions.class);
         if(telemetryOptions == null) {
             telemetryOptions = new TelemetryOptions();
             request = request.newBuilder().tag(TelemetryOptions.class, telemetryOptions).build();
         }
         telemetryOptions.setFeatureUsage(TelemetryOptions.REDIRECT_HANDLER_ENABLED_FLAG);
+        */
 
         Response response = null;
         int requestsCount = 1;

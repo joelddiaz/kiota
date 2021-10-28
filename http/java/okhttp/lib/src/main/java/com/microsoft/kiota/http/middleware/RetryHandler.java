@@ -167,13 +167,17 @@ public class RetryHandler implements Interceptor{
     public Response intercept(@Nonnull final Chain chain) throws IOException {
         Request request = chain.request();
 
+
+
+        //TODO: Implement new Telemetry Handler
+        /**
         TelemetryOptions telemetryOptions = request.tag(TelemetryOptions.class);
         if(telemetryOptions == null) {
             telemetryOptions = new TelemetryOptions();
             request = request.newBuilder().tag(TelemetryOptions.class, telemetryOptions).build();
         }
         telemetryOptions.setFeatureUsage(TelemetryOptions.RETRY_HANDLER_ENABLED_FLAG);
-
+        */
         Response response = chain.proceed(request);
 
         // Use should retry pass along with this request
