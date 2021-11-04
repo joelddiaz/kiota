@@ -13,7 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.0.20" />
     <PackageReference Include="System.Text.Json" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\abstractions\dotnet\src\Microsoft.Kiota.Abstractions.csproj" />
   </ItemGroup>
 </Project>

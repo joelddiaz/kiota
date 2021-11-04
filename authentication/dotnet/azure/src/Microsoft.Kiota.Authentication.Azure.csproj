@@ -14,7 +14,10 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Core" Version="1.20.0" />
-    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.0.19" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\abstractions\dotnet\src\Microsoft.Kiota.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
