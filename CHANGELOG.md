@@ -9,12 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+## [0.0.14] - 2021-11-08
+
+### Added
+
 - Added support for changing the base url #795
 
 ### Changed
 
 - Fixes a bug where arrays of enums could be wrongly mapped.
 - Fixes a bug where go deserialization would fail on collections of scalars.
+- Fixes a bug where TypeScript query parameters would be added to headers instead #812
 
 ## [0.0.13] - 2021-10-27
 
