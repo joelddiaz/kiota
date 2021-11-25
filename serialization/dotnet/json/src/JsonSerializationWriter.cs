@@ -171,7 +171,7 @@ namespace Microsoft.Kiota.Serialization.Json
             {
                 if(typeof(T).GetCustomAttributes<FlagsAttribute>().Any())
                     writer.WriteStringValue(Enum.GetValues(typeof(T))
-                                            .Cast<T>().ToArray() 
+                                            .Cast<T>()
                                             .Where(x => value.Value.HasFlag(x))
                                             .Select(x => Enum.GetName(typeof(T),x))
                                             .Select(x => x.ToFirstCharacterLowerCase())

@@ -25,7 +25,7 @@ namespace Microsoft.Kiota.Http.HttpClientLibrary.Extensions
         public static T GetRequestOption<T>(this HttpRequestMessage httpRequestMessage) where T : IRequestOption
         {
             if(httpRequestMessage.Properties.TryGetValue(
-                (typeof(T).FullName),
+                typeof(T).FullName,
                 out var requestOption))
             {
                 return (T)requestOption;

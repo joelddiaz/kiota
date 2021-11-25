@@ -12,7 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Migrated generator to dotnet 6 #815
-- Fixed dotnet abstractions and core libraries to target netstandard2.1 instead of net5.0
+- Fixes a bug where json deserialization would fail in go
+- Fixes a bug where query parameters would not be added to the request in go
+- Fixes a bug where at signs in path would derail generation
+- Fixes Go doc comments in packages and generation
+- Fixes a bug where RequestInformation did not accept some content headers in dotnet
+- Added support for providing cancellation token in dotnet #874, #875, #876
 
 ## [0.0.14] - 2021-11-08
 
@@ -25,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixes a bug where arrays of enums could be wrongly mapped.
 - Fixes a bug where go deserialization would fail on collections of scalars.
 - Fixes a bug where TypeScript query parameters would be added to headers instead #812
+- Update dotnet abstractions and core libraries to target netstandard2.1 from net5.0
 
 ## [0.0.13] - 2021-10-27
 

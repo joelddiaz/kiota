@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Kiota.Builder.Extensions;
@@ -370,7 +370,7 @@ namespace Kiota.Builder.Refiners {
             }
             CrawlTree(currentElement, c => AddIndexerMethod(c, targetClass, indexerClass, methodNameSuffix, parameterNullable, currentIndexer));
         }
-        internal void AddInnerClasses(CodeElement current, bool prefixClassNameWithParentName) {
+        internal void AddInnerClasses(CodeElement current, bool prefixClassNameWithParentName, string queryParametersBaseClassName = "QueryParametersBase") {
             if(current is CodeClass currentClass) {
                 foreach(var innerClass in currentClass
                                         .Methods
@@ -387,10 +387,11 @@ namespace Kiota.Builder.Refiners {
                     if(currentClass.FindChildByName<CodeClass>(innerClass.Name) == null) {
                         currentClass.AddInnerClass(innerClass);
                     }
-                    (innerClass.StartBlock as Declaration).Inherits = new CodeType { Name = "QueryParametersBase", IsExternal = true };
+                    if(!string.IsNullOrEmpty(queryParametersBaseClassName))
+                        (innerClass.StartBlock as Declaration).Inherits = new CodeType { Name = queryParametersBaseClassName, IsExternal = true };
                 }
             }
-            CrawlTree(current, x => AddInnerClasses(x, prefixClassNameWithParentName));
+            CrawlTree(current, x => AddInnerClasses(x, prefixClassNameWithParentName, queryParametersBaseClassName));
         }
         private static readonly CodeUsingComparer usingComparerWithDeclarations = new(true);
         private static readonly CodeUsingComparer usingComparerWithoutDeclarations = new(false);
@@ -487,6 +488,13 @@ namespace Kiota.Builder.Refiners {
                     parentClass.AddMethod(overloadCtor);
                 }
             CrawlTree(currentElement, AddRawUrlConstructorOverload);
+        }
+        protected static void RemoveCancellationParameter(CodeElement currentElement){
+            if (currentElement is CodeMethod currentMethod &&
+                currentMethod.IsOfKind(CodeMethodKind.RequestExecutor)){
+                    currentMethod.RemoveParametersByKind(CodeParameterKind.Cancellation);
+            }
+            CrawlTree(currentElement, RemoveCancellationParameter);
         }
     }
 }
